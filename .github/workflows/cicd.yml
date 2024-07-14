@@ -24,7 +24,8 @@ jobs:
     - name: Build Docker Image (use run number for version)
       run: docker-compose build
 
+    - name: gcloud login
+      run: gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://asia-southeast1-docker.pkg.dev
+
     - name: Push to AR
-      run: |
-      gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://asia-southeast1-docker.pkg.dev
-      docker push asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook:${TAG:-latest}
+      run: docker push asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook:${TAG:-latest}
