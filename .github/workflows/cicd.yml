@@ -9,7 +9,8 @@ on:
 jobs:
   build:  
     name: Build and Push
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
+    steps:  
 
     - name: code checkout
       uses: actions/checkout@v2
@@ -25,4 +26,3 @@ jobs:
 
     - name: Push to AR
       run: docker push asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook:${{ github.run_number }}
-
