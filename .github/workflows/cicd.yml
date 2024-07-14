@@ -28,4 +28,4 @@ jobs:
       run: gcloud auth configure-docker asia-southeast1-docker.pkg.dev
 
     - name: Push to AR
-      run: docker push asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook:${TAG:-latest}
+      run: docker push asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook:latest
