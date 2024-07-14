@@ -22,7 +22,7 @@ jobs:
         export_default_credentials: true
 
     - name: Build Docker Image (use run number for version)
-      run: docker-compose build --build-arg VERSION=${{ github.run_number }}  # Use run number as version
+      run: docker-compose build
 
     - name: Push to AR
       run: docker push asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook:${{ github.run_number }}
