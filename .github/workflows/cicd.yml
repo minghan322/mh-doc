@@ -16,7 +16,6 @@ jobs:
 
     - name: code checkout
       uses: actions/checkout@v2
-
     - id: "auth"
           uses: google-github-actions/auth@v1
           with:
