@@ -16,10 +16,11 @@ jobs:
 
     - name: code checkout
       uses: actions/checkout@v2
+
     - id: "auth"
-          uses: google-github-actions/auth@v1
-          with:
-            credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
