@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@master
+      uses: google-github-actions/setup-gcloud@v1
       with:
         project_id: ${{ env.PROJECT_ID }}
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
@@ -28,7 +28,7 @@ jobs:
     - name: Build Docker Image
       run: docker build -t $IMAGE_NAME:latest .
 
-    - name: gcloud login
+    - name: gcloud auth
       run: gcloud auth configure-docker asia-southeast1-docker.pkg.dev --quiet
 
     - name: Push to AR
