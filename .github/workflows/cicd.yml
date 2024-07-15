@@ -11,7 +11,6 @@ jobs:
     name: Build and Push
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: gitbook
       PROJECT_ID: cw-devops
     steps:  
 
@@ -26,10 +25,10 @@ jobs:
         export_default_credentials: true
 
     - name: Build Docker Image
-      run: docker build -t $IMAGE_NAME:latest .
+      run: docker build -t asia-southeast1-docker.pkg.dev/$PROJECT_ID/mh-test/gitbook:latest .
 
     - name: gcloud auth
       run: gcloud auth configure-docker asia-southeast1-docker.pkg.dev --quiet
 
     - name: Push to AR
-      run: docker push asia-southeast1-docker.pkg.dev/$PROJECT_ID/mh-test/$IMAGE_NAME:latest
+      run: docker push asia-southeast1-docker.pkg.dev/$PROJECT_ID/mh-test/gitbook:latest
