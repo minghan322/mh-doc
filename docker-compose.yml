@@ -2,8 +2,7 @@ version: '3.8'
 
 services:
   gitbook:
-    image: asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook:${TAG:-latest}
-    build:
+    image: asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook
       context: .
       dockerfile: Dockerfile
       args:
