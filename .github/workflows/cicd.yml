@@ -47,7 +47,7 @@ jobs:
 
     - name: Update deployment.yaml
       run: |
-        sed -i "s|\${dockerImageFullname}|asia-southeast1-docker.pkg.dev/$PROJECT_ID/mh-test/gitbook:v1.0.$GITHUB_RUN_NUMBER|g" deployment.yaml
+        sed -i "s|\${dockerImageFullname}|asia-southeast1-docker.pkg.dev/$PROJECT_ID/mh-test/gitbook:v1.0.$GITHUB_RUN_NUMBER|g" build/deployment.yaml
     
     - name: Set Kubernetes Context
       uses: azure/k8s-set-context@v1
@@ -56,4 +56,4 @@ jobs:
         kubeconfig: ${{ secrets.KUBECONFIG }}
 
     - name: Deploy to GKE
-      run: kubectl apply -f deployment.yaml
+      run: kubectl apply -f build/deployment.yaml
