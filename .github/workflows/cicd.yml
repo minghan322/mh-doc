@@ -26,8 +26,8 @@ jobs:
       uses: google-github-actions/setup-gcloud@v1
 
     - name: Generate version
-        id: version
-        run: echo "::set-output name=VERSION::v1.0.$GITHUB_RUN_NUMBER"
+      id: version
+      run: echo "::set-output name=VERSION::v1.0.$GITHUB_RUN_NUMBER"
 
     - name: Update docker-compose.yml
       run: |
