@@ -25,14 +25,6 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
 
-    - name: Generate version
-      id: version
-      run: echo "::set-output name=VERSION::v1.0.$GITHUB_RUN_NUMBER"
-
-    - name: Update docker-compose.yml
-      run: |
-        sed -i "s/\${TAG:-v1.0.}/\${{ steps.version.outputs.VERSION }}/g" docker-compose.yml
-
     - name: Build Docker Image
       run: docker-compose build
 
