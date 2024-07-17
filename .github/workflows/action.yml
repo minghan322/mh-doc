@@ -1,4 +1,4 @@
-name: Build and Push
+name: Build, Push and Deploy
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and Push
+    name: Build, Push and Deploy
     runs-on: ubuntu-latest
     env:
       PROJECT_ID: cw-devops
