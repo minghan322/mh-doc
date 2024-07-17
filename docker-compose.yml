@@ -5,5 +5,3 @@ services:
     image: asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook
       context: .
       dockerfile: Dockerfile
-      args:
-        TAG: ${TAG:-latest}
