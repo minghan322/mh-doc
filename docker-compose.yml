@@ -2,6 +2,6 @@ version: '3.8'
 
 services:
   gitbook:
-    image: asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook
+    image: asia-southeast1-docker.pkg.dev/cw-devops/mh-test/gitbook:latest
       context: .
       dockerfile: Dockerfile
