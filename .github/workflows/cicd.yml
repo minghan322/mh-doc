@@ -25,6 +25,14 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
 
+    - name: Generate version
+      id: version
+      run: echo "VERSION=v1.0.$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
+
+    - name: Update docker-compose.yml
+      run: |
+        sed -i "s/\${TAG:-v1.0.}/v1.0.$GITHUB_RUN_NUMBER/g" docker-compose.yml
+
     - name: Build Docker Image
       run: docker-compose build
 
@@ -32,4 +40,4 @@ jobs:
       run: gcloud auth configure-docker asia-southeast1-docker.pkg.dev --quiet
 
     - name: Push to AR
-      run: docker push asia-southeast1-docker.pkg.dev/$PROJECT_ID/mh-test/gitbook:${TAG:-v1.0.}${{ github.run_number }}
+      run: docker push asia-southeast1-docker.pkg.dev/$PROJECT_ID/mh-test/gitbook:${TAG:-v1.0.}$GITHUB_RUN_NUMBER
