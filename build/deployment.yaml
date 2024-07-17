@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: gitbook
   labels:
-    app: ${appName}
+    app: gitbook
 spec:
   type: NodePort
   selector:
-    app: ${appName}
+    app: gitbook
   ports:
   - port: 80
     protocol: TCP
@@ -16,21 +16,21 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${appName}
+  name: gitbook
   labels:
-    app: ${appName}
+    app: gitbook
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${appName}
+      app: gitbook
       tier: api
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: ${appName}
+        app: gitbook
         tier: api
     spec:
       imagePullSecrets:
@@ -38,17 +38,10 @@ spec:
       containers:
       - image: ${dockerImageFullname}
         imagePullPolicy: Always
-        name: ${appName}
+        name: gitbook
         readinessProbe:
           httpGet:
             path: /
             port: 80
-        #resources:
-        #  limits:
-        #    memory: "1Gi"
-        #    cpu: "0.5"
-        #  requests:
-        #    memory: "500Mi"
-        #    cpu: "0.1"
         ports:
         - containerPort: 80
