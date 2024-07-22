@@ -34,7 +34,7 @@ spec:
         tier: api
     spec:
       imagePullSecrets:
-        - name: default-secret
+        - name: mh-deployer-secret
       containers:
       - image: ${dockerImageFullname}
         imagePullPolicy: Always
